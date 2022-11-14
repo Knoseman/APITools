@@ -77,6 +77,7 @@ iframe {
 			<button onClick="document.getElementById('APIselector').submit();" value="SelectAccount" name="APIselector">SelectAccount</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="RegisterAccount" name="APIselector">RegisterAccount</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="AccountPayout" name="APIselector">AccountPayout</input>
+                        <button onClick="document.getElementById('APIselector').submit();" value="RegisterAccountPayout" name="APIselector">RegisterAccountPayout</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="Withdraw" name="APIselector">Withdraw</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="ApproveWithdrawal" name="APIselector">ApproveWithdrawal</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="DenyWithdrawal" name="APIselector">DenyWithdrawal</input>
