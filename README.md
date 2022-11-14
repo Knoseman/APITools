@@ -1,4 +1,4 @@
-# Installing and configuring APITools
+# Installing and using APITools
 
 ## Pre-requisites:
 Functional remote or local web server that can run PHP. Verify by loading URL/localhost in your browser. With Apache up and running you should see “It works!”. 
