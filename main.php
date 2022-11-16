@@ -31,7 +31,13 @@ if (isset($_POST['APIselector'])){
 	<h4>API Credentials</h4>
 	<li><label>API Username</label><input type="text" name="Username" value="<?php echo $_SESSION['Username'] ?>"></li>
 	<li><label>API Password</label><input type="password" name="Password" value="<?php echo $_SESSION['Password'] ?>"></li>
-	<li><label>API Endpoint</label><input type="text" name="Environment" value=""></li>
+	<li><label>API Endpoint</label>
+			<select name="Environment">
+				<option selected></option>
+				<option value="https://test.trustly.com/api/1" >MIE</option>
+				<option value="https://api.trustly.com/1">PROD</option>
+			</select>
+		</li>
 </td>
 <td class="two">
 	<li><label>Private RSA key</label><textarea name="RSAKey" rows="27" cols="90" placeholder="Paste private RSA key"></textarea></li>
