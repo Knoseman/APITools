@@ -65,6 +65,59 @@ if (isset($_POST['APIselector'])){
 </td>
 <?php
 		break;
+				case "RegisterAccountPayout":
+?>
+<td class="one">
+	<h4>Parameters</h4>
+	<li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
+	<li><label>ClearingHouse</label><input type="text" name="ClearingHouse" value="SWEDEN"></li>
+	<li><label>BankNumber</label><input type="text" name="BankNumber" value="83279"></li>
+	<li><label>AccountNumber</label><input type="text" name="AccountNumber" value="60000015"></li>
+	<li><label>Firstname</label><input type="text" name="Firstname" value="Steve"></li>
+	<li><label>Lastname</label><input type="text" name="Lastname" value="Smith"></li>
+	<li><label>NotificationURL</label><input type="text" name="NotificationURL" value="https://test.trustly.com/demo/notifyd_test"></li>
+	<li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
+	<li><label>MessageID</label><input type="text" name="MessageID" value="<?php echo rand(1,100000000) ?>"></li>
+	<li><label>Amount</label><input type="text" name="Amount" value="10"></li>
+	<li><label>Currency</label><input type="text" name="Currency" value="SEK"></li>
+</td>
+<td class="two">
+	<h4>Attributes</h4>
+	<li><label>ShopperStatement</label><input type="text" name="ShopperStatement" placeholder="trustly.com">&nbsp;(optional)</li>
+	<li><label>ExternalReference</label><input type="text" name="ExternalReference" placeholder="MerchExtRef000">&nbsp;(optional)</li>
+	<li><label>PSPMerchant</label><input type="text" name="PSPMerchant" placeholder="Merchant name">&nbsp;(optional)</li>
+	<li><label>PSPMerchantURL</label><input type="text" name="PSPMerchantURL" placeholder="https://">&nbsp;(optional)</li>
+	<li><label>MCC</label><input type="text" name="MerchantCategoryCode" placeholder="7656">&nbsp;(optional)</li>
+	<li><label>DateOfBirth</label><input type="text" name="DateOfBirth" value="1990-01-20"></li>
+	<li><label>MobilePhone</label><input type="text" name="MobilePhone" placeholder="+46709876543">&nbsp;(optional)</li>
+	<li><label>NationalIdentificationNumber</label><input type="text" name="NationalIdentificationNumber" placeholder="790131-1234">&nbsp;(optional)</li>
+	<li><label>AddressCountry</label><input type="text" name="AddressCountry" placeholder="SE">&nbsp;(optional)</li>
+	<li><label>AddressPostalCode</label><input type="text" name="AddressPostalCode" placeholder="SE-11253">&nbsp;(optional)</li>
+	<li><label>AddressCity</label><input type="text" name="AddressCity" placeholder="Stockholm">&nbsp;(optional)</li>
+	<li><label>AddressLine1</label><input type="text" name="AddressLine1" placeholder="Main street 1">&nbsp;(optional)</li>
+	<li><label>AddressLine2</label><input type="text" name="AddressLine2" placeholder="Apartment 123, 2 stairs up">&nbsp;(optional)</li>
+	<li><label>Address</label><input type="text" name="Address" placeholder="Use only if needed">&nbsp;(optional)</li>
+	<li><label>Email</label><input type="text" name="Email" placeholder="test<?php echo rand(1,100000000) ?>@trustly.com"></li>
+	<li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value"></li>
+	<h4 style="cursor: pointer" onClick="ShowHideDIV('SenderInformation')">SenderInformation (Optional)</h4>
+	<div id="SenderInformation" style="display: none">
+		<li><label>Partytype</label>
+			<select name="Partytype_2">&nbsp;(optional)
+				<option selected></option>
+				<option value="PERSON" >PERSON</option>
+				<option value="ORGANISATION">ORGANISATION</option>
+			</select>&nbsp;(optional)
+		</li>
+		<li><label>Adress</label><input type="text" name="Adress_2" placeholder="Street 1, 12345 Barcelona">&nbsp;(optional)</li>
+		<li><label>CountryCode</label><input type="text" name="CountryCode_2" placeholder="SE">&nbsp;(optional)</li>
+		<li><label>CustomerID</label><input type="text" name="CustomerID_2" placeholder="123456789">&nbsp;(optional)</li>
+		<li><label>DateOfBirth</label><input type="date" name="DateOfBirth_2" placeholder="1990-03-31">&nbsp;(optional)</li>
+		<li><label>Firstname</label><input type="text" name="Firstname_2" placeholder="Steve">&nbsp;(optional)</li>
+		<li><label>LastName</label><input type="text" name="LastName_2" placeholder="Smith">&nbsp;(optional)</li>
+	</div>
+</td>
+<?php
+		break;
 		case "AccountPayout":
 ?>
 <td class="one">
@@ -394,7 +447,7 @@ if (isset($_POST['APIselector'])){
 	<li><label>ShopperStatement</label><input type="text" name="ShopperStatement" value="Sport Shop"></li>
 	<li><label>Email</label><input type="text" name="Email" value="test<?php echo rand(1,100000000) ?>@trustly.com"></li>
 	<li><label>PaymentDate</label><input type="date" name="PaymentDate"></li>
-	<li><label>ExternalReference</label><input type="text"OCR" placeholder="OCR" name="ExternalReference"></li>
+	<li><label>ExternalReference</label><input type="text"OCR placeholder="OCR" name="ExternalReference"></li>
 	<li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value"></li>
 </td>
 <?php
@@ -515,6 +568,12 @@ if (isset($_POST['APIselector'])){
 		case "AccountPayout":
 			$Parameters = array('Amount','AccountID','Currency','NotificationURL','EndUserID','MessageID');
 			$SenderInformation = array('DateOfBirth_2','CountryCode_2','Firstname_2','LastName_2','Adress_2','Partytype_2');
+		break;
+
+		case "RegisterAccountPayout":
+			$Parameters = array('EndUserID','ClearingHouse','AccountNumber','BankNumber','Firstname','Lastname','NotificationURL','MessageID','Amount','Currency');
+			$Attributes = array('ShopperStatement', 'ExternalReference', 'PSPMerchant', 'PSPMerchantURL', 'MerchantCategoryCode', 'DateOfBirth', 'MobilePhone', 'NationalIdentificationNumber', 'AddressCountry', 'AddressPostalCode', 'AddressCity', 'AddressLine1', 'AddressLine2', 'Address', 'Email', 'CustomAttributeKey');
+			$SenderInformation = array('Adress_2', 'CountryCode_2','CustomerID_2','DateOfBirth_2','Firstname_2','LastName_2', 'Partytype_2');
 		break;
 
 		case "Deposit":
