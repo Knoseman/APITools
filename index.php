@@ -84,11 +84,7 @@ iframe {
 			<button onClick="document.getElementById('APIselector').submit();" value="AccountLedger" name="APIselector">AccountLedger</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="Balance" name="APIselector">Balance</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="ViewAutomaticSettlementDetailsCSV" name="APIselector">ViewAutomaticSettlementDetailsCSV</input>
-			<button onClick="document.getElementById('APIselector').submit();" value="GetOrderTransferStatus" name="APIselector">GetOrderTransferStatus</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="GetWithdrawals" name="APIselector">GetWithdrawals</input>
-			<button onClick="document.getElementById('APIselector').submit();" value="AccountHistory" name="APIselector">AccountHistory</input>
-			<button onClick="document.getElementById('APIselector').submit();" value="AccountAggregation" name="APIselector">AccountAggregation</input>
-			<button onClick="document.getElementById('APIselector').submit();" value="P2P" name="APIselector">P2P</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="Credentials" name="APIselector">Credentials</input>
 	</div>
 </form>

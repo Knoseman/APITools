@@ -403,37 +403,10 @@ if (isset($_POST['APIselector'])){
 	<li><label>DateOfBirth</label><input type="date" name="DateOfBirth" value="1990-01-20"><span class="required">*</span></li>
 	<li><label>Email</label><input type="text" name="Email" value="test<?php echo rand(1,100000000) ?>@trustly.com"><span class="required">*</span></li>
 	<li><label>RequestDirectDebitMandate</label><input type="checkbox" name="RequestDirectDebitMandate" value="1">&nbsp;(optional)</li>
-	<li><label>AISRequests</label><input type="checkbox" name="AISRequests" value="ACCOUNT_HISTORY">&nbsp;(optional)</li>
 	<li><label>DisableLocalisation</label><input type="checkbox" value="1" name="DisableLocalisation">&nbsp;(optional)</li>
 	<li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value"></li>
 </td>
 
-<?php
-		break;
-
-		case "AccountHistory":
-?>
-<td class="one">
-	<h4>Parameters</h4>
-	<li><label>OrderID</label><input type="text" name="OrderID" placeholder="123456"></li>
-</td>
-	<td class="two">
-	<h4>Attributes</h4>
-		<li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value"></li>
-	</td>
-<?php
-		break;
-
-		case "AccountAggregation":
-?>
-<td class="one">
-	<h4>Parameters</h4>
-	<li><label>OrderID</label><input type="text" name="OrderID" placeholder="123456"></li>
-</td>
-<td class="two">
-	<h4>Attributes</h4>
-	<li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value"></li>
-</td>
 <?php
 		break;
 
@@ -467,29 +440,6 @@ if (isset($_POST['APIselector'])){
 </td>
 <td class="two">
 	<h4>Attributes</h4>
-	<li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value"></li>
-</td>
-<?php
-		break;
-
-		case "P2P":
-?>
-<td class="one">
-	<h4>Parameters</h4>
-	<li><label>NotificationURL</label><input type="text" name="NotificationURL" placeholder="https://test.trustly.com/demo/notifyd_test"></li>
-	<li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
-	<li><label>MessageID</label><input type="text" name="MessageID" value="<?php echo rand(1,100000000) ?>"></li>
-</td>
-	<td class="two">
-	<h4>Attributes</h4>
-	<li><label>FeeAmount</label><input type="text" name="FeeAmount" value="20.50"></li>
-	<li><label>FeeCurrency</label><input type="text" name="FeeCurrency" value="EUR"></li>
-	<h4>Recipients</h4>
-	<li><label>EndUserID</label><input type="text" name="EndUserID_2" placeholder="<?php echo rand(1,100000000) ?>"></li>
-	<li><label>Amount</label><input type="text" name="Amount_2" placeholder="20.50"></li>
-	<li><label>Currency</label><input type="text" name="Currency_2" placeholder="EUR"></li>
-	<li><label>Firstname</label><input type="text" name="Firstname_2" placeholder="Anna"></li>
-	<li><label>Lastname</label><input type="text" name="Lastname_2" placeholder="Appelgren"></li>
 	<li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value"></li>
 </td>
 <?php
@@ -531,17 +481,6 @@ if (isset($_POST['APIselector'])){
 <?php
 		break;
 
-		case "GetOrderTransferStatus":
-?>
-<td class="one">
-	<h4>Parameters</h4>
-	<li><label>OrderID</label><input type="text" name="OrderID" placeholder="123456"></li>
-</td><td class="two">
-	<h4>Attributes</h4>
-	<li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value"></li>
-</td>
-<?php
-		break;
 	}
 ?>
 	<input type="hidden" name="myAPICall" value="<?php echo $APICall ?>">
@@ -612,15 +551,6 @@ if (isset($_POST['APIselector'])){
 		case "SelectAccount":
 			$Parameters = array('NotificationURL','EndUserID','MessageID');
 			$Attributes = array('Locale','Country','IP','SuccessURL','FailURL','TemplateURL','URLTarget','MobilePhone','Firstname','Lastname','NationalIdentificationNumber','UnchangeableNationalIdentificationNumber','DateOfBirth','Email','RequestDirectDebitMandate');
-			$AISRequests = array('AISRequests');
-		break;
-
-		case "AccountHistory":
-			$Parameters = array('OrderID');
-		break;
-
-		case "AccountAggregation":
-			$Parameters = array('OrderID');
 		break;
 
 		case "Charge":
@@ -630,12 +560,6 @@ if (isset($_POST['APIselector'])){
 
 		case "Cancel":
 			$Parameters = array('OrderID');
-		break;
-
-		case "P2P":
-			$Parameters = array('NotificationURL','EndUserID','MessageID');
-			$Attributes = array('FeeAmount','FeeCurrency');
-			$Recipients = array('EndUserID_2','Amount_2','Currency_2','Firstname_2','Lastname_2');
 		break;
 
 		case "Balance":
@@ -650,9 +574,6 @@ if (isset($_POST['APIselector'])){
 			$Parameters = array('FromDate','ToDate','Currency');
 		break;
 
-		case "GetOrderTransferStatus":
-			$Parameters = array('OrderID');
-		break;
 	}
 	if ($Parameters) {
 		foreach($Parameters as $field) {
@@ -693,14 +614,6 @@ if (isset($_POST['APIselector'])){
 			if (!empty($_POST[$field])) {
 				$trimmedField = rtrim($field,'_2');
 				$formFields['Attributes']['Recipients'][0][$trimmedField] = $_POST[$field];
-			}
-		}
-	}
-
-	if (isset($AISRequests)) {
-		foreach($AISRequests as $field) {
-			if (!empty($_POST[$field])) {
-				$formFields['Attributes']['AISRequests'][] = $_POST[$field];
 			}
 		}
 	}
