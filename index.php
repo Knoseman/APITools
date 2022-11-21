@@ -72,7 +72,7 @@ iframe {
 	<div class="menu">
 			<button onClick="document.getElementById('APIselector').submit();" value="Deposit" name="APIselector">Deposit</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="Charge" name="APIselector">Charge</input>
-			<button onClick="document.getElementById('APIselector').submit();" value="Cancel" name="APIselector">Cancel</input>
+			<button onClick="document.getElementById('APIselector').submit();" value="CancelCharge" name="APIselector">CancelCharge</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="Refund" name="APIselector">Refund</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="SelectAccount" name="APIselector">SelectAccount</input>
 			<button onClick="document.getElementById('APIselector').submit();" value="RegisterAccount" name="APIselector">RegisterAccount</input>
