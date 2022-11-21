@@ -432,7 +432,7 @@ if (isset($_POST['APIselector'])){
 <?php
 		break;
 
-		case "Cancel":
+		case "CancelCharge":
 ?>
 <td class="one">
 	<h4>Parameters</h4>
@@ -558,7 +558,7 @@ if (isset($_POST['APIselector'])){
 			$Attributes = array('ShopperStatement','Email', 'PaymentDate','ExternalReference');
 		break;
 
-		case "Cancel":
+		case "CancelCharge":
 			$Parameters = array('OrderID');
 		break;
 
