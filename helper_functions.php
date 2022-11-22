@@ -58,7 +58,6 @@ function API($method, $params, $environment, $keypath) {
             ))
         )
     );
-    //$r = file_get_contents($environment, false, stream_context_create($options));
     $r_json = file_get_contents($environment, false, stream_context_create($options));
     $r = json_decode($r_json,true);
     
