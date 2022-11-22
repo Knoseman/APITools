@@ -14,7 +14,7 @@ function serialize_data($object) {
 function sign($method, $uuid, $data, $keypath) {
     $plaintext = $method . $uuid . serialize_data($data);
     print_r("<div class='row'><div class='callResult'> -----PLAINTEXT WITHOUT SIGNING-----<br/>");
-    print_r($plaintext);
+    print_r(htmlspecialchars($plaintext));
     print_r("</div></div>");
     openssl_sign($plaintext, $signature, $keypath);
     return base64_encode($signature);
@@ -33,7 +33,7 @@ function uuid()
 function API($method, $params, $environment, $keypath) {
     $uuid = uuid();
     $signature = sign($method, $uuid, $params, $keypath);
-    $json_req = json_encode(array(
+    $json_pre_req = array(
                 'method' => $method,
                 'params' => array(
                     'UUID' => $uuid,
@@ -41,7 +41,8 @@ function API($method, $params, $environment, $keypath) {
                     'Signature' => $signature
                 ),
                 'version' => '1.1'
-    ));
+    );
+    $json_req = json_encode($json_pre_req);
     $options = array('http' =>
         array(
             'method'  => 'POST',
@@ -57,9 +58,9 @@ function API($method, $params, $environment, $keypath) {
             ))
         )
     );
-    $r = file_get_contents($environment, false, stream_context_create($options));
-    
-    $r = json_decode($r,true);
+    //$r = file_get_contents($environment, false, stream_context_create($options));
+    $r_json = file_get_contents($environment, false, stream_context_create($options));
+    $r = json_decode($r_json,true);
     
     print_r("<div class='row'>");
     if ($r['result']['data']['url'])
@@ -77,20 +78,16 @@ function API($method, $params, $environment, $keypath) {
         print_r("' id='trustlyurl' target='new'>TrustlyURL</a><br/><br/>");
         echo $r['result']['data']['url'];
         print_r("</div>");
-        print_r("<div class='callResult right'>-----API call json-----<br/><pre>");
-    } else {
-        print_r("<div class='callResult'>-----API call json-----<br/><pre>");
     }
-    $json_req = json_decode($json_req, true);
-    echo json_encode($json_req, JSON_PRETTY_PRINT);
+    
+    print_r("<div class='callResult right'>-----API call json-----<br/><pre>");
+    print_r(htmlspecialchars(json_encode($json_pre_req, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)));
     error_log(print_r($json_req,true));
     print_r("</pre></div>");
     print_r("</div>");
 
-$r = file_get_contents($environment, false, stream_context_create($options));
     print_r("<div class='callResult'>-----RESULT JSON -----<br/><pre>");
-    $r = json_decode($r, true);
-    echo json_encode($r, JSON_PRETTY_PRINT);
+    print_r (json_encode($r, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
     error_log(print_r($r,true));
     print_r("</pre></div>");
 }
