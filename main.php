@@ -33,8 +33,7 @@ if (isset($_POST['APIselector'])){
 	<li><label>API Password</label><input type="password" name="Password" value="<?php echo $_SESSION['Password'] ?>"></li>
 	<li><label>API Endpoint</label>
 			<select name="Environment">
-				<option selected></option>
-				<option value="https://test.trustly.com/api/1" >MIE</option>
+				<option selected value="https://test.trustly.com/api/1" >MIE</option>
 				<option value="https://api.trustly.com/1">PROD</option>
 			</select>
 		</li>

@@ -12,4 +12,3 @@ If local web server does not respond, start local webserver: `sudo apachectl sta
 1. Click on Credentials button
 2. Enter credentials and private key, and save.
 3. Use any of the API methods available.
-4. Profit!
