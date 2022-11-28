@@ -418,8 +418,8 @@ if (isset($_POST['APIselector'])){
 	<li><label>NotificationURL</label><input type="text" name="NotificationURL" value="https://test.trustly.com/demo/notifyd_test"></li>
 	<li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
 	<li><label>MessageID</label><input type="text" name="MessageID" value="<?php echo rand(1,100000000) ?>"></li>
-	<li><label>Amount</label><input type="text" name="Amount" value="5.05"></li>
-	<li><label>Currency</label><input type="text" name="Currency" value="EUR"></li>
+	<li><label>Amount</label><input type="text" name="Amount" value="101"></li>
+	<li><label>Currency</label><input type="text" name="Currency" value="SEK"></li>
 </td>
 <td class="two">
 	<h4>Attributes</h4>
