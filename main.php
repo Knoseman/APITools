@@ -2,16 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="application/javascript">
-function ShowHideDIV(theDiv) {
-	var x = document.getElementById(theDiv);
-	if (x.style.display === "none") {
-		x.style.display = "block";
-	} else {
-		x.style.display = "none";
-	}
-}
-</script>
+<script src="apitools.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
