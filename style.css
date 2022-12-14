@@ -13,7 +13,7 @@ td{
 	vertical-align: top;
 }
 .one {
-	width: 500px;
+	width: 600px;
 }
 .two {
 	width: 650px;
@@ -34,10 +34,10 @@ label {
 	color:#000000;
 }
 .one label {
-	width: 100px;
+	width: 250px;
 }
 .container li input {
-	width: 250px;
+	width: 230px;
 	color:#000000;
 }
 ::placeholder {
