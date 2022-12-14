@@ -470,7 +470,7 @@ if (isset($_POST['APIselector'])){
   <input type="hidden" name="myAPICall" value="<?php echo $APICall ?>">
 </tr>
 </table>
-  <input type="submit" name="Submit" value="Submit <?php if ($_POST['env'] == "1") echo "to LIVE" ?>" class="btn" />
+  <input type="submit" name="Submit" value="Submit <?php if ($_SESSION["Environment"] == "https://api.trustly.com/1") echo "to LIVE" ?>" class="btn" />
   </form>
 <?php
 } elseif ( isset( $_POST['myAPICall'] ) ){
