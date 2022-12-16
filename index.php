@@ -2,6 +2,7 @@
 $_SESSION["Username"] = "PA_NAME";
 $_SESSION["Password"] = "PA_PASSWORD";
 $_SESSION["RSAKey"] = "RSA_KEY";
+$_SESSION["Environment"] = 'https://test.trustly.com/api/1';
 ?>
 <html>
 <head>

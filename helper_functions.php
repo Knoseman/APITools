@@ -30,8 +30,8 @@ function uuid()
     return $uuid;
 }
 
-function API($method, $params, $environment, $keypath) {
-    $uuid = uuid();
+function API($method, $params, $environment, $keypath, $uuid) {
+    //$uuid = uuid();
     $signature = sign($method, $uuid, $params, $keypath);
     $json_pre_req = array(
                 'method' => $method,
