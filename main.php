@@ -10,16 +10,24 @@
   <table>
   <tr>
 <?php
-
 require('helper_functions.php');
 if (isset($_POST['APIselector'])){
   $APICall = $_POST['APIselector'];
-  echo '<form action="main.php" method="post" target="main">';
+?>
+<form action="main.php" method="post" target="main">
+<td class="one">
+  <h4><?php echo ($APICall == 'Credentials') ? "Credentials" : "Parameters" ?></h4>
+<?php 
+  if($APICall != 'Credentials') {
+?>
+  <li><label><span class="tooltip">API username<span class="tooltiptext">Set under Credentials</span></span></label><?php echo $_SESSION["Username"]; ?></li>
+  <li><label><span class="tooltip">Endpoint<span class="tooltiptext">Set under Credentials</span></span></label><?php echo $_SESSION["Environment"]; ?></li>
+  <li><label>UUID</label><input type="text" name="UUID" value="<?php echo uuid(); ?>"></li>
+<?php
+  }
   switch ($APICall) {
     case "Credentials":
 ?>
-<td class="one">
-  <h4>API Credentials</h4>
   <li><label>API Username</label><input type="text" name="Username" value="<?php echo $_SESSION['Username'] ?>"></li>
   <li><label>API Password</label><input type="password" name="Password" value="<?php echo $_SESSION['Password'] ?>"></li>
   <li><label>API Endpoint</label>
@@ -31,10 +39,9 @@ if (isset($_POST['APIselector'])){
 </td>
 <?php
     break;
+
     case "RegisterAccount":
 ?>
-<td class="one">
-  <h4>Parameters</h4>
   <li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
   <li><label>ClearingHouse</label><input type="text" name="ClearingHouse" value="SWEDEN"></li>
   <li><label>BankNumber</label><input type="text" name="BankNumber" value="83279"></li>
@@ -60,8 +67,6 @@ if (isset($_POST['APIselector'])){
     break;
         case "RegisterAccountPayout":
 ?>
-<td class="one">
-  <h4>Parameters</h4>
   <li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
   <li><label>ClearingHouse</label><input type="text" name="ClearingHouse" value="SWEDEN"></li>
   <li><label>BankNumber</label><input type="text" name="BankNumber" value="83279"></li>
@@ -113,8 +118,6 @@ if (isset($_POST['APIselector'])){
     break;
     case "AccountPayout":
 ?>
-<td class="one">
-  <h4>Parameters</h4>
   <li><label>NotificationURL</label><input type="text" name="NotificationURL" value="https://test.trustly.com/demo/notifyd_test"></li>
   <li><label>AccountID</label><input type="text" name="AccountID" value="2883919934"></li>
   <li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
@@ -142,115 +145,109 @@ if (isset($_POST['APIselector'])){
     break;
     case "Deposit":
 ?>
-  <td class="one">
-    <h4>Parameters</h4>
-    <li><label>NotificationURL</label><input type="text" name="NotificationURL" value="https://test.trustly.com/demo/notifyd_test"></li>
-    <li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
-    <li><label>MessageID</label><input type="text" name="MessageID" value="<?php echo rand(1,100000000) ?>"></li>
-    <h4>Attributes</h4>
-    <li><label>Currency</label><input type="text" name="Currency" value="SEK"><span class="required">*</span></li>
-    <li><label>Firstname</label><input type="text" name="Firstname" value="Steve"><span class="required">*</span></li>
-    <li><label>Lastname</label><input type="text" name="Lastname" value="Smith"><span class="required">*</span></li>
-    <li><label>Email</label><input type="text" name="Email" value="test<?php echo rand(1,100000000) ?>@trustly.com"><span class="required">*</span></li>
-    <li><label>Locale</label><input type="text" name="Locale" placeholder="en_US">&nbsp;(optional)</li>
-    <li><label>SuggestedMinAmount</label><input type="text" name="SuggestedMinAmount" placeholder="5.00">&nbsp;(optional)</li>
-    <li><label>SuggestedMaxAmount</label><input type="text" name="SuggestedMaxAmount" placeholder="500.00">&nbsp;(optional)</li>
-    <li><label>Amount</label><input type="text" name="Amount" placeholder="103.50">&nbsp;(optional)</li>
-    <li><label>Country</label><input type="text" name="Country" value="SE">&nbsp;(optional)</li>
-    <li><label>NationalIdentificationNumber</label><input type="text" name="NationalIdentificationNumber" placeholder="790131-1234">&nbsp;(optional)</li>
-    <li><label>AccountID</label><input type="text" name="AccountID" placeholder="1234567890">&nbsp;(optional)</li>
-    <li><label>UnchangeableNationalIdentificationNumber</label><input type="checkbox" value="1" name="UnchangeableNationalIdentificationNumber">&nbsp;(optional)</li>
-    <li><label>RequestDirectDebitMandate</label><input type="checkbox" value="1" name="RequestDirectDebitMandate">&nbsp;(optional)</li>
-    <li><label>QuickDeposit</label><input type="checkbox" value="1" name="QuickDeposit">&nbsp;(optional)</li>
-    <li><label>HoldNotifications</label><input type="checkbox" value="1" name="HoldNotifications">&nbsp;(optional)</li>
-    <li><label>RequestKYC</label><input type="checkbox" value="1" name="RequestKYC">&nbsp;(optional)</li>
-    <li><label>Method</label>
-      <select name="Method">
+  <li><label>NotificationURL</label><input type="text" name="NotificationURL" value="https://test.trustly.com/demo/notifyd_test"></li>
+  <li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
+  <li><label>MessageID</label><input type="text" name="MessageID" value="<?php echo rand(1,100000000) ?>"></li>
+  <h4>Attributes</h4>
+  <li><label>Currency</label><input type="text" name="Currency" value="SEK"><span class="required">*</span></li>
+  <li><label>Firstname</label><input type="text" name="Firstname" value="Steve"><span class="required">*</span></li>
+  <li><label>Lastname</label><input type="text" name="Lastname" value="Smith"><span class="required">*</span></li>
+  <li><label>Email</label><input type="text" name="Email" value="test<?php echo rand(1,100000000) ?>@trustly.com"><span class="required">*</span></li>
+  <li><label><span class="tooltip">Locale<span class="tooltiptext">Sets language in iframe</span></span></label><input type="text" name="Locale" placeholder="en_US">&nbsp;(optional)</li>
+  <li><label>SuggestedMinAmount</label><input type="text" name="SuggestedMinAmount" placeholder="5.00">&nbsp;(optional)</li>
+  <li><label>SuggestedMaxAmount</label><input type="text" name="SuggestedMaxAmount" placeholder="500.00">&nbsp;(optional)</li>
+  <li><label>Amount</label><input type="text" name="Amount" placeholder="103.50">&nbsp;(optional)</li>
+  <li><label>Country</label><input type="text" name="Country" value="SE">&nbsp;(optional)</li>
+  <li><label>NationalIdentificationNumber</label><input type="text" name="NationalIdentificationNumber" placeholder="790131-1234">&nbsp;(optional)</li>
+  <li><label>AccountID</label><input type="text" name="AccountID" placeholder="1234567890">&nbsp;(optional)</li>
+  <li><label>UnchangeableNationalIdentificationNumber</label><input type="checkbox" value="1" name="UnchangeableNationalIdentificationNumber">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">RequestDirectDebitMandate<span class="tooltiptext">For TDD only</span></span></label><input type="checkbox" value="1" name="RequestDirectDebitMandate">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">QuickDeposit<span class="tooltiptext">For TDD only</span></span></label><input type="checkbox" value="1" name="QuickDeposit">&nbsp;(optional)</li>
+  <li><label>HoldNotifications</label><input type="checkbox" value="1" name="HoldNotifications">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">RequestKYC<span class="tooltiptext">For Pay n Play</span></span></label><input type="checkbox" value="1" name="RequestKYC">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">Method<span class="tooltiptext">For iDeal and FBB</span></span></label>
+    <select name="Method">
+      <option selected></option>
+      <option value="deposit.bank.netherlands.ideal">iDeal</option>
+      <option value="deposit.bank.sweden.swish">Swish</option>
+      <option value="deposit.bank.finland.aaba_bankbutton">AABA</option>
+      <option value="deposit.bank.finland.daba_bankbutton">DABA</option>
+      <option value="deposit.bank.finland.hand_bankbutton">HAND</option>
+      <option value="deposit.bank.finland.popf_bankbutton">POPF</option>
+      <option value="deposit.bank.finland.hels_bankbutton">HELS</option>
+      <option value="deposit.bank.finland.itel_bankbutton">ITEL</option>
+      <option value="deposit.bank.finland.sban_bankbutton">SBAN</option>
+      <option value="deposit.bank.finland.ndea_bankbutton">NDEA</option>
+      <option value="deposit.bank.finland.omsp_bankbutton">OMSP</option>
+      <option value="deposit.bank.finland.okoy_bankbutton">OKOY</option>
+    </select>&nbsp;(optional)</li>
+  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
+  <br><br><br>
+</td>
+<td class="two">
+  <h4 type="button" style="cursor: pointer" id="OptionalAttributeHeader">Optional attributes</h4>
+  <div id="OptionalAttributes" style="display: none">
+    <li><label>IP</label><input type="text" name="IP" placeholder="83.140.44.184">&nbsp;(optional)</li>
+    <li><label>SuccessURL</label><input type="text" name="SuccessURL" placeholder="https://trustly.com/thank_you.html">&nbsp;(optional)</li>
+    <li><label>FailURL</label><input type="text" name="FailURL" value="https://trustly.com/payment_error.html">&nbsp;(optional)</li>
+    <li><label>TemplateURL</label><input type="text" name="TemplateURL" placeholder="https://example.org/checkout_trustly.html">&nbsp;(optional)</li>
+    <li>
+      <label>URLTarget</label>
+      <select name="URLTarget">
         <option selected></option>
-        <option value="deposit.bank.netherlands.ideal">iDeal</option>
-        <option value="deposit.bank.sweden.swish">Swish</option>
-        <option value="deposit.bank.finland.aaba_bankbutton">AABA</option>
-        <option value="deposit.bank.finland.daba_bankbutton">DABA</option>
-        <option value="deposit.bank.finland.hand_bankbutton">HAND</option>
-        <option value="deposit.bank.finland.popf_bankbutton">POPF</option>
-        <option value="deposit.bank.finland.hels_bankbutton">HELS</option>
-        <option value="deposit.bank.finland.itel_bankbutton">ITEL</option>
-        <option value="deposit.bank.finland.sban_bankbutton">SBAN</option>
-        <option value="deposit.bank.finland.ndea_bankbutton">NDEA</option>
-        <option value="deposit.bank.finland.omsp_bankbutton">OMSP</option>
-        <option value="deposit.bank.finland.okoy_bankbutton">OKOY</option>
-      </select>&nbsp;(optional)</li>
-    <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
-    <br><br><br>
-  </td>
-  <td class="two">
-    <h4 type="button" style="cursor: pointer" id="OptionalAttributeHeader">Optional attributes</h4>
-    <div id="OptionalAttributes" style="display: none">
-      <li><label>IP</label><input type="text" name="IP" placeholder="83.140.44.184">&nbsp;(optional)</li>
-      <li><label>SuccessURL</label><input type="text" name="SuccessURL" placeholder="https://trustly.com/thank_you.html">&nbsp;(optional)</li>
-      <li><label>FailURL</label><input type="text" name="FailURL" value="https://trustly.com/payment_error.html">&nbsp;(optional)</li>
-      <li><label>TemplateURL</label><input type="text" name="TemplateURL" placeholder="https://example.org/checkout_trustly.html">&nbsp;(optional)</li>
-      <li>
-        <label>URLTarget</label>
-        <select name="URLTarget">
-          <option selected></option>
-          <option value="_self" >_SELF</option>
-            <option value="_top">_TOP</option>
-            <option value="_parent" >_PARENT</option>
-        </select>&nbsp;(optional)
-      </li>
-      <li><label>MobilePhone</label><input type="text" name="MobilePhone" placeholder="+46709876543">&nbsp;(optional)</li>
-      <li><label>ShopperStatement</label><input type="text" name="ShopperStatement" placeholder="trustly.com">&nbsp;(optional)</li>
-      <li><label>ShippingAddressCountry</label><input type="text" name="ShippingAddressCountry" placeholder="SE">&nbsp;(optional)</li>
-      <li><label>ShippingAddressPostalCode</label><input type="text" name="ShippingAddressPostalCode" placeholder="SE-11253">&nbsp;(optional)</li>
-      <li><label>ShippingAddressCity</label><input type="text" name="ShippingAddressCity" placeholder="Stockholm">&nbsp;(optional)</li>
-      <li><label>ShippingAddressLine1</label><input type="text" name="ShippingAddressLine1" placeholder="Main street 1">&nbsp;(optional)</li>
-      <li><label>ShippingAddressLine2</label><input type="text" name="ShippingAddressLine2" placeholder="Apartment 123, 2 stairs up">&nbsp;(optional)</li>
-      <li><label>ShippingAddress</label><input type="text" name="ShippingAddress" placeholder="Use only if needed">&nbsp;(optional)</li>
-      <li><label>ExternalReference</label><input type="text" name="ExternalReference" placeholder="MerchExtRef000">&nbsp;(optional)</li>
-      <li><label>ChargeAccountID</label><input type="text" name="ChargeAccountID" placeholder="9594811343">&nbsp;(optional)</li>
-      <li><label>MCC</label><input type="text" name="MerchantCategoryCode" placeholder="7656">&nbsp;(optional)</li>
-      <li><label>PSPMerchant</label><input type="text" name="PSPMerchant" placeholder="Merchant name">&nbsp;(optional)</li>
-      <li><label>PSPMerchantURL</label><input type="text" name="PSPMerchantURL" placeholder="https://">&nbsp;(optional)</li>
-      <li><label>DisableLocalisation</label><input type="checkbox" value="1" name="DisableLocalisation">&nbsp;(optional)</li>
-      <h4>RecipientInformation</h4>
-	    <li><label>Partytype</label>
-	      <select name="Partytype_2">&nbsp;(optional)
-	        <option selected></option>
-	        <option value="PERSON" >PERSON</option>
-	        <option value="ORGANISATION">ORGANISATION</option>
-	      </select>&nbsp;(optional)
-	    </li>
-	    <li><label>Firstname</label><input type="text" name="Firstname_2" placeholder="Mark">&nbsp;(optional)</li>
-	    <li><label>Lastname</label><input type="text" name="Lastname_2" placeholder="Smith">&nbsp;(optional)</li>
-	    <li><label>CountryCode</label><input type="text" name="CountryCode_2" placeholder="ES">&nbsp;(optional)</li>
-	    <li><label>CustomerID</label><input type="text" name="CustomerID_2" placeholder="123456789">&nbsp;(optional)</li>
-	    <li><label>Address</label><input type="text" name="Address_2" placeholder="Main street 1, 12345, Barcelona">&nbsp;(optional)</li>
-	    <li><label>DateOfBirth</label><input type="text" name="DateOfBirth_2" placeholder="1980-01-30">&nbsp;(optional)</li>
-    </div>
-    <br>
-  </td>
+        <option value="_self" >_SELF</option>
+          <option value="_top">_TOP</option>
+          <option value="_parent" >_PARENT</option>
+      </select>&nbsp;(optional)
+    </li>
+    <li><label>MobilePhone</label><input type="text" name="MobilePhone" placeholder="+46709876543">&nbsp;(optional)</li>
+    <li><label>ShopperStatement</label><input type="text" name="ShopperStatement" placeholder="trustly.com">&nbsp;(optional)</li>
+    <li><label>ShippingAddressCountry</label><input type="text" name="ShippingAddressCountry" placeholder="SE">&nbsp;(optional)</li>
+    <li><label>ShippingAddressPostalCode</label><input type="text" name="ShippingAddressPostalCode" placeholder="SE-11253">&nbsp;(optional)</li>
+    <li><label>ShippingAddressCity</label><input type="text" name="ShippingAddressCity" placeholder="Stockholm">&nbsp;(optional)</li>
+    <li><label>ShippingAddressLine1</label><input type="text" name="ShippingAddressLine1" placeholder="Main street 1">&nbsp;(optional)</li>
+    <li><label>ShippingAddressLine2</label><input type="text" name="ShippingAddressLine2" placeholder="Apartment 123, 2 stairs up">&nbsp;(optional)</li>
+    <li><label>ShippingAddress</label><input type="text" name="ShippingAddress" placeholder="Use only if needed">&nbsp;(optional)</li>
+    <li><label>ExternalReference</label><input type="text" name="ExternalReference" placeholder="MerchExtRef000">&nbsp;(optional)</li>
+    <li><label>ChargeAccountID</label><input type="text" name="ChargeAccountID" placeholder="9594811343">&nbsp;(optional)</li>
+    <li><label>MCC</label><input type="text" name="MerchantCategoryCode" placeholder="7656">&nbsp;(optional)</li>
+    <li><label>PSPMerchant</label><input type="text" name="PSPMerchant" placeholder="Merchant name">&nbsp;(optional)</li>
+    <li><label>PSPMerchantURL</label><input type="text" name="PSPMerchantURL" placeholder="https://">&nbsp;(optional)</li>
+    <li><label>DisableLocalisation</label><input type="checkbox" value="1" name="DisableLocalisation">&nbsp;(optional)</li>
+    <h4>RecipientInformation</h4>
+    <li><label>Partytype</label>
+      <select name="Partytype_2">&nbsp;(optional)
+        <option selected></option>
+        <option value="PERSON" >PERSON</option>
+        <option value="ORGANISATION">ORGANISATION</option>
+      </select>&nbsp;(optional)
+    </li>
+    <li><label>Firstname</label><input type="text" name="Firstname_2" placeholder="Mark">&nbsp;(optional)</li>
+    <li><label>Lastname</label><input type="text" name="Lastname_2" placeholder="Smith">&nbsp;(optional)</li>
+    <li><label>CountryCode</label><input type="text" name="CountryCode_2" placeholder="ES">&nbsp;(optional)</li>
+    <li><label>CustomerID</label><input type="text" name="CustomerID_2" placeholder="123456789">&nbsp;(optional)</li>
+    <li><label>Address</label><input type="text" name="Address_2" placeholder="Main street 1, 12345, Barcelona">&nbsp;(optional)</li>
+    <li><label>DateOfBirth</label><input type="text" name="DateOfBirth_2" placeholder="1980-01-30">&nbsp;(optional)</li>
+  </div>
+  <br>
+</td>
 <?php
     break;
     case "Refund":
 ?>
-  <td class="one">
-    <h4>Parameters</h4>
-    <li><label>OrderID</label><input type="text" name="OrderID" value="1478035889"></li>
-    <li><label>Amount</label><input type="text" name="Amount" value="10"></li>
-    <li><label>Currency</label><input type="text" name="Currency" value="SEK"></li>
-  </td>
-  <td class="two">
-    <h4>Attributes</h4>
-    <li><label>ExternalReference</label><input type="text" name="ExternalReference" placeholder="MerchExtRef000">&nbsp;(optional)</li>
-    <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
-  </td>
+  <li><label>OrderID</label><input type="text" name="OrderID" value="1478035889"></li>
+  <li><label>Amount</label><input type="text" name="Amount" value="10"></li>
+  <li><label>Currency</label><input type="text" name="Currency" value="SEK"></li>
+</td>
+<td class="two">
+  <h4>Attributes</h4>
+  <li><label>ExternalReference</label><input type="text" name="ExternalReference" placeholder="MerchExtRef000">&nbsp;(optional)</li>
+  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
+</td>
 <?php
     break;
     case "Withdraw":
 ?>
-<td class="one">
-  <h4>Parameters</h4>
   <li><label>NotificationURL</label><input type="text" name="NotificationURL" value="https://test.trustly.com/demo/notifyd_test"></li>
   <li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
   <li><label>MessageID</label><input type="text" name="MessageID" value="<?php echo rand(1,100000000) ?>"></li>
@@ -321,8 +318,6 @@ if (isset($_POST['APIselector'])){
     case "ApproveWithdrawal":
     case "DenyWithdrawal":
 ?>
-<td class="one">
-  <h4>Parameters</h4>
   <li><label>OrderID</label><input type="text" name="OrderID" placeholder="123456"></li>
 </td>
   <td class="two">
@@ -334,8 +329,6 @@ if (isset($_POST['APIselector'])){
 
     case "ViewAutomaticSettlementDetailsCSV":
 ?>
-<td class="one">
-  <h4>Parameters</h4>
   <li><label>SettlementDate</label><input type="date" name="SettlementDate" placeholder="2014-04-01"></li>
   <li><label>Currency</label><input type="text" name="Currency" placeholder="SEK"></li>
   <li>
@@ -348,6 +341,7 @@ if (isset($_POST['APIselector'])){
   </li>
 </td>
   <td class="two">
+    <h4>Attributes</h4>
     <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
   </td>
 <?php
@@ -355,8 +349,6 @@ if (isset($_POST['APIselector'])){
 
     case "SelectAccount":
 ?>
-<td class="one">
-  <h4>Parameters</h4>
   <li><label>NotificationURL</label><input type="text" name="NotificationURL" value="https://test.trustly.com/demo/notifyd_test"></li>
   <li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
   <li><label>MessageID</label><input type="text" name="MessageID" value="<?php echo rand(1,100000000) ?>"></li>
@@ -396,8 +388,6 @@ if (isset($_POST['APIselector'])){
 
     case "Charge":
 ?>
-<td class="one">
-  <h4>Parameters</h4>
   <li><label>AccountID</label><input type="text" name="AccountID" placeholder="1774941262"></li>
   <li><label>NotificationURL</label><input type="text" name="NotificationURL" value="https://test.trustly.com/demo/notifyd_test"></li>
   <li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
@@ -418,8 +408,6 @@ if (isset($_POST['APIselector'])){
 
     case "CancelCharge":
 ?>
-<td class="one">
-  <h4>Parameters</h4>
   <li><label>OrderID</label><input type="text" name="OrderID" placeholder="123456"></li>
 </td>
 <td class="two">
@@ -431,7 +419,7 @@ if (isset($_POST['APIselector'])){
 
     case "Balance":
 ?>
-<td class="one">
+  <input type="hidden" name="UUID" value="<?php echo uuid() ?>">
   <h4>Press "Submit" to check balance for current merchant</h4>
 </td>
 <?php
@@ -439,8 +427,6 @@ if (isset($_POST['APIselector'])){
 
     case "GetWithdrawals":
 ?>
-<td class="one">
-  <h4>Parameters</h4>
   <li><label>OrderID</label><input type="text" name="OrderID" placeholder="123456"></li>
 </td>
 <td class="two">
@@ -452,8 +438,6 @@ if (isset($_POST['APIselector'])){
 
     case "AccountLedger":
 ?>
-<td class="one">
-  <h4>Parameters</h4>
   <li><label>FromDate</label><input type="date" name="FromDate" placeholder="2018-05-30"></li>
   <li><label>ToDate</label><input type="date" name="ToDate" placeholder="2018-06-01"></li>
   <li><label>Currency</label><input type="text" name="Currency" placeholder="EUR"></li>
@@ -464,7 +448,6 @@ if (isset($_POST['APIselector'])){
 </td>
 <?php
     break;
-
   }
 ?>
   <input type="hidden" name="myAPICall" value="<?php echo $APICall ?>">
@@ -605,7 +588,8 @@ if (isset($_POST['APIselector'])){
   $formFields['Password'] = $_SESSION["Password"];
   $environment = $_SESSION["Environment"];
   $keypath = $_SESSION['RSAKey'];
-  $r = API($APICall,$formFields,$environment,$keypath);
+  $uuid = $_POST['UUID'];
+  $r = API($APICall,$formFields,$environment,$keypath,$uuid);
 }
 ?>
 </div>
