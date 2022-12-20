@@ -19,6 +19,16 @@ function sign($method, $uuid, $data, $keypath) {
     openssl_sign($plaintext, $signature, $keypath);
     return base64_encode($signature);
 }
+
+function onlySign($method, $uuid, $data, $keypath) {
+    $plaintext = $method . $uuid . serialize_data($data);
+    print_r("<div class='row'><div class='callResult'> -----PLAINTEXT WITHOUT SIGNING-----<br/>");
+    print_r(htmlspecialchars($plaintext));
+    print_r("</div></div>");
+    openssl_sign($plaintext, $signature, $keypath);
+    return base64_encode($signature);
+}
+
 function uuid()
 {
     $chars = md5(uniqid(true));
