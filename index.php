@@ -86,6 +86,7 @@ iframe {
       <button type="submit" value="Balance" name="APIselector">Balance</input>
       <button type="submit" value="ViewAutomaticSettlementDetailsCSV" name="APIselector">ViewAutomaticSettlementDetailsCSV</input>
       <button type="submit" value="GetWithdrawals" name="APIselector">GetWithdrawals</input>
+      <button type="submit" value="GenerateSignature" name="APIselector">GenerateSignature</input>
       <button type="submit" value="Credentials" name="APIselector">Credentials</input>
     </div>
   </form>

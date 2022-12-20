@@ -61,7 +61,7 @@ if (isset($_POST['APIselector'])){
   <li><label>AddressLine2</label><input type="text" name="AddressLine2" placeholder="Apartment 123, 2 stairs up">&nbsp;(optional)</li>
   <li><label>Address</label><input type="text" name="Address" placeholder="Use only if needed">&nbsp;(optional)</li>
   <li><label>Email</label><input type="text" name="Email" placeholder="test<?php echo rand(1,100000000) ?>@trustly.com"></li>
-  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
+  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
 </td>
 <?php
     break;
@@ -96,8 +96,8 @@ if (isset($_POST['APIselector'])){
   <li><label>AddressLine2</label><input type="text" name="AddressLine2" placeholder="Apartment 123, 2 stairs up">&nbsp;(optional)</li>
   <li><label>Address</label><input type="text" name="Address" placeholder="Use only if needed">&nbsp;(optional)</li>
   <li><label>Email</label><input type="text" name="Email" placeholder="test<?php echo rand(1,100000000) ?>@trustly.com"></li>
-  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
-  <h4 type="button" style="cursor: pointer" id="OptionalAttributeHeader">SenderInformation (Optional)</h4>
+  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
+  <h4 type="button" style="cursor: pointer" id="OptionalAttributeHeader">SenderInformation (Click to show / hide)</h4>
   <div id="OptionalAttributes" style="display: none">
     <li><label>Partytype</label>
       <select name="Partytype_2">&nbsp;(optional)
@@ -139,7 +139,7 @@ if (isset($_POST['APIselector'])){
   <li><label>Firstname</label><input type="text" name="Firstname_2" placeholder="Steve">&nbsp;(optional)</li>
   <li><label>LastName</label><input type="text" name="LastName_2" placeholder="Smith">&nbsp;(optional)</li>
   <li><label>Adress</label><input type="text" name="Adress_2" placeholder="Street 1, 12345 Barcelona">&nbsp;(optional)</li>
-  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
+  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
 </td>
 <?php
     break;
@@ -181,11 +181,10 @@ if (isset($_POST['APIselector'])){
       <option value="deposit.bank.finland.omsp_bankbutton">OMSP</option>
       <option value="deposit.bank.finland.okoy_bankbutton">OKOY</option>
     </select>&nbsp;(optional)</li>
-  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
   <br><br><br>
 </td>
 <td class="two">
-  <h4 type="button" style="cursor: pointer" id="OptionalAttributeHeader">Optional attributes</h4>
+  <h4 type="button" style="cursor: pointer" id="OptionalAttributeHeader">Optional attributes (Click to show / hide)</h4>
   <div id="OptionalAttributes" style="display: none">
     <li><label>IP</label><input type="text" name="IP" placeholder="83.140.44.184">&nbsp;(optional)</li>
     <li><label>SuccessURL</label><input type="text" name="SuccessURL" placeholder="https://trustly.com/thank_you.html">&nbsp;(optional)</li>
@@ -214,6 +213,7 @@ if (isset($_POST['APIselector'])){
     <li><label>PSPMerchant</label><input type="text" name="PSPMerchant" placeholder="Merchant name">&nbsp;(optional)</li>
     <li><label>PSPMerchantURL</label><input type="text" name="PSPMerchantURL" placeholder="https://">&nbsp;(optional)</li>
     <li><label>DisableLocalisation</label><input type="checkbox" value="1" name="DisableLocalisation">&nbsp;(optional)</li>
+    <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
     <h4>RecipientInformation</h4>
     <li><label>Partytype</label>
       <select name="Partytype_2">&nbsp;(optional)
@@ -242,7 +242,7 @@ if (isset($_POST['APIselector'])){
 <td class="two">
   <h4>Attributes</h4>
   <li><label>ExternalReference</label><input type="text" name="ExternalReference" placeholder="MerchExtRef000">&nbsp;(optional)</li>
-  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
+  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
 </td>
 <?php
     break;
@@ -263,10 +263,9 @@ if (isset($_POST['APIselector'])){
   <li><label>SuggestedMinAmount</label><input type="text" name="SuggestedMinAmount" placeholder="5.00">&nbsp;(optional)</li>
   <li><label>SuggestedMaxAmount</label><input type="text" name="SuggestedMaxAmount" placeholder="500.00">&nbsp;(optional)</li>
   <li><label>Country</label><input type="text" name="Country" value="SE">&nbsp;(optional)</li>
-  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
 </td>
 <td class="two">
-  <h4 type="button" style="cursor: pointer" id="OptionalAttributeHeader">Optional attributes</h4>
+  <h4 type="button" style="cursor: pointer" id="OptionalAttributeHeader">Optional attributes (Click to show / hide)</h4>
   <div id="OptionalAttributes" style="display: none">
     <li><label>IP</label><input type="text" name="IP" placeholder="83.140.44.184">&nbsp;(optional)</li>
     <li><label>SuccessURL</label><input type="text" name="SuccessURL" placeholder="https://trustly.com/thank_you.html">&nbsp;(optional)</li>
@@ -296,6 +295,7 @@ if (isset($_POST['APIselector'])){
     <li><label>HoldNotifications</label><input type="checkbox" value="1" name="HoldNotifications">&nbsp;(optional)</li>
     <li><label>PSPMerchant</label><input type="text" name="PSPMerchant">&nbsp;(optional)</li>
     <li><label>DisableLocalisation</label><input type="checkbox" value="1" name="DisableLocalisation">&nbsp;(optional)</li>
+    <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
     <br>
     <h4>SenderInformation (Optional)</h4>
     <li><label>Partytype</label>
@@ -322,7 +322,7 @@ if (isset($_POST['APIselector'])){
 </td>
   <td class="two">
   <h4>Attributes</h4>
-    <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
+    <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
   </td>
 <?php
     break;
@@ -342,7 +342,7 @@ if (isset($_POST['APIselector'])){
 </td>
   <td class="two">
     <h4>Attributes</h4>
-    <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
+    <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
   </td>
 <?php
     break;
@@ -380,7 +380,7 @@ if (isset($_POST['APIselector'])){
   <li><label>Email</label><input type="text" name="Email" value="test<?php echo rand(1,100000000) ?>@trustly.com"><span class="required">*</span></li>
   <li><label>RequestDirectDebitMandate</label><input type="checkbox" name="RequestDirectDebitMandate" value="1">&nbsp;(optional)</li>
   <li><label>DisableLocalisation</label><input type="checkbox" value="1" name="DisableLocalisation">&nbsp;(optional)</li>
-  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
+  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
 </td>
 
 <?php
@@ -401,7 +401,7 @@ if (isset($_POST['APIselector'])){
   <li><label>Email</label><input type="text" name="Email" value="test<?php echo rand(1,100000000) ?>@trustly.com"></li>
   <li><label>PaymentDate</label><input type="date" name="PaymentDate"></li>
   <li><label>ExternalReference</label><input type="text"OCR placeholder="OCR" name="ExternalReference"></li>
-  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
+  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
 </td>
 <?php
     break;
@@ -412,7 +412,7 @@ if (isset($_POST['APIselector'])){
 </td>
 <td class="two">
   <h4>Attributes</h4>
-  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
+  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
 </td>
 <?php
     break;
@@ -431,7 +431,7 @@ if (isset($_POST['APIselector'])){
 </td>
 <td class="two">
   <h4>Attributes</h4>
-  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
+  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
 </td>
 <?php    
     break;
@@ -444,7 +444,27 @@ if (isset($_POST['APIselector'])){
 </td>
 <td class="two">
   <h4>Attributes</h4>
-  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom value">&nbsp;(optional)</li>
+  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="5"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
+</td>
+<?php
+    break;
+
+    case "GenerateSignature":
+?>
+
+  <label>Method</label>
+    <select name="Method">
+      <option value="Deposit">Deposit</option>
+      <option value="Refund">Refund</option>
+      <option value="SelectAccount">SelectAccount</option>
+      <option value="RegisterAccount">RegisterAccount</option>
+      <option value="Withdraw">Withdraw</option>
+      <option value="AccountPayout">AccountPayout</option>
+      <option value="Charge">Charge</option>
+    </select>
+</td>
+<td class="two">
+  <li><label>JSON Data Object</label><textarea name="JSON" rows="25" cols="50" placeholder="Paste JSON Data Object."></textarea></li>
 </td>
 <?php
     break;
@@ -469,6 +489,21 @@ if (isset($_POST['APIselector'])){
       $_SESSION["Password"] = $_POST['Password'];
       $_SESSION["Environment"] = $_POST['Environment'];
       $_SESSION["RSAKey"] = $_POST['RSAKey'];
+      exit;
+    break;
+    case "GenerateSignature":
+      $method = $_POST['Method'];
+      $uuid = $_POST['UUID'];
+      $formFields = json_decode($_POST['JSON'], true);
+      $formFields['Username'] = $_SESSION["Username"];
+      $formFields['Password'] = $_SESSION["Password"];
+      $keypath = $_SESSION['RSAKey'];
+      //echo $method . $uuid . serialize_data($formFields);
+      $signature = onlySign($method, $uuid, $formFields, $keypath);
+      print_r("<div class='callResult right'>-----Signature-----<br/>");
+      print_r($signature);
+      print_r("</div>");
+      // echo serialize_data($formFields);
       exit;
     break;
     case "RegisterAccount":
@@ -540,7 +575,6 @@ if (isset($_POST['APIselector'])){
     case "AccountLedger":
       $Parameters = array('FromDate','ToDate','Currency');
     break;
-
   }
   if ($Parameters) {
     foreach($Parameters as $field) {
