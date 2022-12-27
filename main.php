@@ -21,21 +21,21 @@ if (isset($_POST['APIselector'])){
   if($APICall != 'Credentials') {
 ?>
   <li><label><span class="tooltip">API username<span class="tooltiptext">Set under Credentials</span></span></label><?php echo $_SESSION["Username"]; ?></li>
-  <li><label><span class="tooltip">Endpoint<span class="tooltiptext">Set under Credentials</span></span></label><?php echo $_SESSION["Environment"]; ?></li>
-  <li><label>UUID</label><input type="text" name="UUID" value="<?php echo uuid(); ?>"></li>
+  <li><label><span class="tooltip">API Endpoint<span class="tooltiptext">Set under Credentials</span></span></label><?php echo $_SESSION["Environment"]; ?></li>
+  <li><label><span class="tooltip">UUID<span class="tooltiptext">All requests must have an UUID (Universally unique identifier) assigned to them in the format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx where x is a hexadecimal digit (0-9 and a-f).</span></span></label><input type="text" name="UUID" value="<?php echo uuid(); ?>"></li>
 <?php
   }
   switch ($APICall) {
     case "Credentials":
 ?>
-  <li><label>API Username</label><input type="text" name="Username" value="<?php echo $_SESSION['Username'] ?>"></li>
-  <li><label>API Password</label><input type="password" name="Password" value="<?php echo $_SESSION['Password'] ?>"></li>
-  <li><label>API Endpoint</label>
-      <input type="text" name="Environment" value="https://test.trustly.com/api/1">
+  <li><label><span class="tooltip">API username<span class="tooltiptext">API credentials are provided by Trustly during integration.</span></span></label><input type="text" name="Username" placeholder="API username" value="<?php echo $_SESSION['Username'] ?>"></li>
+  <li><label>API Password</label><input type="password" name="Password" placeholder="API password" value="<?php echo $_SESSION['Password'] ?>"></li>
+  <li><label><span class="tooltip">API Endpoint<span class="tooltiptext">Trustly's endpoint</span></span></label>
+      <input type="text" name="Environment" value="<?php echo $_SESSION['Environment'] ?>">
     </li>
 </td>
 <td class="two">
-  <li><label>Private RSA key</label><textarea name="RSAKey" rows="27" cols="90" placeholder="Paste private RSA key"></textarea></li>
+  <li><label>Private RSA key</label><textarea name="RSAKey" rows="28" cols="90" placeholder="Paste private RSA key"></textarea></li>
 </td>
 <?php
     break;
@@ -145,29 +145,29 @@ if (isset($_POST['APIselector'])){
     break;
     case "Deposit":
 ?>
-  <li><label>NotificationURL</label><input type="text" name="NotificationURL" value="https://test.trustly.com/demo/notifyd_test"></li>
-  <li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
-  <li><label>MessageID</label><input type="text" name="MessageID" value="<?php echo rand(1,100000000) ?>"></li>
+  <li><label><span class="tooltip">NotificationURL<span class="tooltiptext">The URL to which notifications for this transaction should be sent to.</span></span></label><input type="text" name="NotificationURL" value="https://test.trustly.com/demo/notifyd_test"></li>
+  <li><label><span class="tooltip">EndUserID<span class="tooltiptext">ID, username, hash or anything uniquely identifying the end-user requesting the deposit.</span></span></label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
+  <li><label><span class="tooltip">MessageID<span class="tooltiptext">Merchant's unique ID for the deposit.</span></span></label><input type="text" name="MessageID" value="<?php echo rand(1,100000000) ?>"></li>
   <h4>Attributes</h4>
-  <li><label>Currency</label><input type="text" name="Currency" value="SEK"><span class="required">*</span></li>
-  <li><label>Firstname</label><input type="text" name="Firstname" value="Steve"><span class="required">*</span></li>
-  <li><label>Lastname</label><input type="text" name="Lastname" value="Smith"><span class="required">*</span></li>
-  <li><label>Email</label><input type="text" name="Email" value="test<?php echo rand(1,100000000) ?>@trustly.com"><span class="required">*</span></li>
-  <li><label><span class="tooltip">Locale<span class="tooltiptext">Sets language in iframe</span></span></label><input type="text" name="Locale" placeholder="en_US">&nbsp;(optional)</li>
-  <li><label>SuggestedMinAmount</label><input type="text" name="SuggestedMinAmount" placeholder="5.00">&nbsp;(optional)</li>
-  <li><label>SuggestedMaxAmount</label><input type="text" name="SuggestedMaxAmount" placeholder="500.00">&nbsp;(optional)</li>
-  <li><label>Amount</label><input type="text" name="Amount" placeholder="103.50">&nbsp;(optional)</li>
-  <li><label>Country</label><input type="text" name="Country" value="SE">&nbsp;(optional)</li>
-  <li><label>NationalIdentificationNumber</label><input type="text" name="NationalIdentificationNumber" placeholder="790131-1234">&nbsp;(optional)</li>
-  <li><label>AccountID</label><input type="text" name="AccountID" placeholder="1234567890">&nbsp;(optional)</li>
-  <li><label>UnchangeableNationalIdentificationNumber</label><input type="checkbox" value="1" name="UnchangeableNationalIdentificationNumber">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">Currency<span class="tooltiptext">The currency to settle to the merchant's Trustly account.</span></span></label><input type="text" name="Currency" value="SEK"><span class="required">*</span></li>
+  <li><label><span class="tooltip">Firstname<span class="tooltiptext">The end-user's first name.</span></span></label><input type="text" name="Firstname" value="Steve"><span class="required">*</span></li>
+  <li><label><span class="tooltip">Lastname<span class="tooltiptext">The end-user's last name.</span></span></label><input type="text" name="Lastname" value="Smith"><span class="required">*</span></li>
+  <li><label><span class="tooltip">Email<span class="tooltiptext">The email address of the end user.</span></span></label><input type="text" name="Email" value="test<?php echo rand(1,100000000) ?>@trustly.com"><span class="required">*</span></li>
+  <li><label><span class="tooltip">Locale<span class="tooltiptext">The end-users localization preference in the format [language[_territory]] (en_GB).</span></span></label><input type="text" name="Locale" placeholder="en_US">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">SuggestedMinAmount<span class="tooltiptext">The minimum amount the end-user is allowed to deposit. Do not use this attribute in combination with Amount.</span></span></label><input type="text" name="SuggestedMinAmount" placeholder="5.00">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">SuggestedMaxAmount<span class="tooltiptext">The maximum amount the end-user is allowed to deposit. Do not use this attribute in combination with Amount.</span></span></label><input type="text" name="SuggestedMaxAmount" placeholder="500.00">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">Amount<span class="tooltiptext">The amount to deposit. Do not use this attribute in combination with SuggestedMinAmount or SuggestedMaxAmount.</span></span></label><input type="text" name="Amount" placeholder="103.50">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">Country<span class="tooltiptext">The ISO 3166-1-alpha-2 code of the end-user's country.</span></span></label><input type="text" name="Country" value="SE">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">AccountID<span class="tooltiptext">For Trustly Express.</span></span></label><input type="text" name="AccountID" placeholder="1234567890">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">NationalIdentificationNumber<span class="tooltiptext">The end-user's social security number / personal number / birth number.</span></span></label><input type="text" name="NationalIdentificationNumber" placeholder="790131-1234">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">UnchangeableNationalIdentificationNumber<span class="tooltiptext">Locks NationalIdentificationNumber. For Sweden only.</span></span></label><input type="checkbox" value="1" name="UnchangeableNationalIdentificationNumber">&nbsp;(optional)</li>
   <li><label><span class="tooltip">RequestDirectDebitMandate<span class="tooltiptext">For TDD only</span></span></label><input type="checkbox" value="1" name="RequestDirectDebitMandate">&nbsp;(optional)</li>
   <li><label><span class="tooltip">QuickDeposit<span class="tooltiptext">For TDD only</span></span></label><input type="checkbox" value="1" name="QuickDeposit">&nbsp;(optional)</li>
-  <li><label>HoldNotifications</label><input type="checkbox" value="1" name="HoldNotifications">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">HoldNotifications<span class="tooltiptext">For manual handling of notifications.</span></span></label><input type="checkbox" value="1" name="HoldNotifications">&nbsp;(optional)</li>
   <li><label><span class="tooltip">RequestKYC<span class="tooltiptext">For Pay n Play</span></span></label><input type="checkbox" value="1" name="RequestKYC">&nbsp;(optional)</li>
   <li><label><span class="tooltip">Method<span class="tooltiptext">For iDeal and FBB</span></span></label>
     <select name="Method">
-      <option selected></option>
+      <option value="" selected></option>
       <option value="deposit.bank.netherlands.ideal">iDeal</option>
       <option value="deposit.bank.sweden.swish">Swish</option>
       <option value="deposit.bank.finland.aaba_bankbutton">AABA</option>
