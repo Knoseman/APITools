@@ -126,7 +126,7 @@ DIV#input {
 /* Tooltip text */
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 150px;
+  width: 250px;
   background-color: #D2D2D2;
   color: #000;
   text-align: center;
