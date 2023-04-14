@@ -156,7 +156,7 @@ if (isset($_POST['APIselector'])){
   <li><label><span class="tooltip">Locale<span class="tooltiptext">The end-users localization preference in the format [language[_territory]] (en_GB).</span></span></label><input type="text" name="Locale" placeholder="en_US">&nbsp;(optional)</li>
   <li><label><span class="tooltip">SuggestedMinAmount<span class="tooltiptext">The minimum amount the end-user is allowed to deposit. Do not use this attribute in combination with Amount.</span></span></label><input type="text" name="SuggestedMinAmount" placeholder="5.00">&nbsp;(optional)</li>
   <li><label><span class="tooltip">SuggestedMaxAmount<span class="tooltiptext">The maximum amount the end-user is allowed to deposit. Do not use this attribute in combination with Amount.</span></span></label><input type="text" name="SuggestedMaxAmount" placeholder="500.00">&nbsp;(optional)</li>
-  <li><label><span class="tooltip">Amount<span class="tooltiptext">The amount to deposit. Do not use this attribute in combination with SuggestedMinAmount or SuggestedMaxAmount.</span></span></label><input type="text" name="Amount" placeholder="103.50">&nbsp;(optional)</li>
+  <li><label><span class="tooltip">Amount<span class="tooltiptext">The amount to deposit. Do not use this attribute in combination with SuggestedMinAmount or SuggestedMaxAmount.</span></span></label><input type="text" name="Amount" value="1.00">&nbsp;(optional)</li>
   <li><label><span class="tooltip">Country<span class="tooltiptext">The ISO 3166-1-alpha-2 code of the end-user's country.</span></span></label><input type="text" name="Country" value="SE">&nbsp;(optional)</li>
   <li><label><span class="tooltip">AccountID<span class="tooltiptext">For Trustly Express.</span></span></label><input type="text" name="AccountID" placeholder="1234567890">&nbsp;(optional)</li>
   <li><label><span class="tooltip">NationalIdentificationNumber<span class="tooltiptext">The end-user's social security number / personal number / birth number.</span></span></label><input type="text" name="NationalIdentificationNumber" placeholder="790131-1234">&nbsp;(optional)</li>
@@ -417,6 +417,35 @@ if (isset($_POST['APIselector'])){
 <?php
     break;
 
+    case "DirectDebitMandate":
+?>
+  <li><label>NotificationURL</label><input type="text" name="NotificationURL" value="https://test.trustly.com/demo/notifyd_test"></li>
+  <li><label>EndUserID</label><input type="text" name="EndUserID" value="<?php echo rand(1,100000000) ?>"></li>
+  <li><label>MessageID</label><input type="text" name="MessageID" value="<?php echo rand(1,100000000) ?>"></li>
+</td>
+<td class="two">
+  <h4>Attributes</h4>
+  <li><label>AccountID</label><input type="text" name="AccountID" placeholder="1774941262">&nbsp;(optional)</li>
+  <li><label>MerchantReference</label><input type="text" name="MerchantReference" placeholder="MerchRef_001">&nbsp;(optional)</li>
+  <li><label>Country</label><input type="text" name="Country" value="SE">&nbsp;(optional)</li>
+  <li><label>Firstname</label><input type="text" name="Firstname" value="Steve"><span class="required">*</span></li>
+  <li><label>Lastname</label><input type="text" name="Lastname" value="Smith"><span class="required">*</span></li>
+  <li><label>Locale</label><input type="text" name="Locale" placeholder="en_US">&nbsp;(optional)</li>
+  <li><label>Email</label><input type="text" name="Email" value="test<?php echo rand(1,100000000) ?>@trustly.com"><span class="required">*</span></li>
+  <li><label>MobilePhone</label><input type="text" name="MobilePhone" placeholder="+46709876543">&nbsp;(optional)</li>
+  <li><label>SuccessURL</label><input type="text" name="SuccessURL" placeholder="https://trustly.com/thank_you.html">&nbsp;(optional)</li>
+  <li><label>FailURL</label><input type="text" name="FailURL" value="https://trustly.com/payment_error.html">&nbsp;(optional)</li>
+  <li><label>AddressLine1</label><input type="text" name="AddressLine1" placeholder="Main street 1">&nbsp;(optional)</li>
+  <li><label>AddressLine2</label><input type="text" name="AddressLine2" placeholder="Apartment 123, 2 stairs up">&nbsp;(optional)</li>
+  <li><label>AddressCity</label><input type="text" name="AddressCity" placeholder="Stockholm">&nbsp;(optional)</li>
+  <li><label>AddressPostalCode</label><input type="text" name="AddressPostalCode" placeholder="SE-11253">&nbsp;(optional)</li>
+  <li><label>AddressCountry</label><input type="text" name="AddressCountry" placeholder="SE">&nbsp;(optional)</li>
+  <li><label>URLScheme</label><input type="text" name="URLScheme" placeholder="yourCustomURLScheme://">&nbsp;(optional)</li>
+  <li><label>DisableLocalisation</label><input type="checkbox" value="1" name="DisableLocalisation">&nbsp;(optional)</li>
+  <li><label><input type="text" name="CustomAttributeKey" placeholder="Custom attribute key" size="15"></label><input type="text" name="CustomAttributeValue" placeholder="Custom attribute value">&nbsp;(optional)</li>
+<?php
+    break;
+
     case "Balance":
 ?>
   <input type="hidden" name="UUID" value="<?php echo uuid() ?>">
@@ -562,6 +591,11 @@ if (isset($_POST['APIselector'])){
 
     case "CancelCharge":
       $Parameters = array('OrderID');
+    break;
+
+    case "DirectDebitMandate":
+      $Parameters = array('NotificationURL','EndUserID','MessageID');
+      $Attributes = array('AccountID','MerchantReference','Country','Firstname','Lastname','Locale','Email','MobilePhone','SuccessURL','FailURL','AddressLine1', 'AddressLine2', 'AddressCity', 'AddressPostalCode', 'AddressCountry', 'URLScheme', 'URLScheme', 'DisableLocalisation');
     break;
 
     case "Balance":

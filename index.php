@@ -72,14 +72,15 @@ iframe {
     <div class="outerDiv">APITools</div>
     <div class="menu">
       <button type="submit" value="Deposit" name="APIselector">Deposit</input>
-      <button type="submit" value="Charge" name="APIselector">Charge</input>
-      <button type="submit" value="CancelCharge" name="APIselector">CancelCharge</input>
       <button type="submit" value="Refund" name="APIselector">Refund</input>
       <button type="submit" value="SelectAccount" name="APIselector">SelectAccount</input>
       <button type="submit" value="RegisterAccount" name="APIselector">RegisterAccount</input>
+      <button type="submit" value="Charge" name="APIselector">Charge</input>
+      <button type="submit" value="CancelCharge" name="APIselector">CancelCharge</input>
+      <button type="submit" value="DirectDebitMandate" name="APIselector">DirectDebitMandate</input>
+      <button type="submit" value="Withdraw" name="APIselector">Withdraw</input>
       <button type="submit" value="AccountPayout" name="APIselector">AccountPayout</input>
       <button type="submit" value="RegisterAccountPayout" name="APIselector">RegisterAccountPayout</input>
-      <button type="submit" value="Withdraw" name="APIselector">Withdraw</input>
       <button type="submit" value="ApproveWithdrawal" name="APIselector">ApproveWithdrawal</input>
       <button type="submit" value="DenyWithdrawal" name="APIselector">DenyWithdrawal</input>
       <button type="submit" value="AccountLedger" name="APIselector">AccountLedger</input>
